@@ -11,7 +11,7 @@ const verifyService = async (token) => {
 
     if (!user) throw new JsonWebTokenError('User not found');
 
-    return true;
+    return user.id;
   } catch (error) {
     if (error instanceof JsonWebTokenError) {
       throw new ApiError('Invalid Token', 400);

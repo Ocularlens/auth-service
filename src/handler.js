@@ -52,9 +52,9 @@ const verify = async (context, req) => {
     validation(verifySchema, req.body);
 
     const { token } = req.body;
-    await verifyService(token);
+    const userId = await verifyService(token);
 
-    response(context, { message: "token verfified" });
+    response(context, { message: "token verfified", userId });
   } catch (error) {
     console.error(error);
     if (error instanceof ApiError) {
